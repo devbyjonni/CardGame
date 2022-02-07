@@ -19,7 +19,7 @@ class PlayingCardView: UIView {
         let paragrphStyle = NSMutableParagraphStyle()
         paragrphStyle.alignment = .center
         
-        return NSAttributedString(string: string, attributes: [.paragraphStyle : paragrphStyle, .font : font])
+        return NSAttributedString(string: string, attributes: [.paragraphStyle : paragrphStyle, .font : font, .foregroundColor : UIColor.black])
     }
     
     private var cornerString: NSAttributedString {
@@ -28,7 +28,6 @@ class PlayingCardView: UIView {
     
     private lazy var upperLeftCornerLabel: UILabel = createCornerLabel()
     private lazy var lowerRightCornerLabel: UILabel = createCornerLabel()
-    
     
     private func createCornerLabel() -> UILabel {
         let label = UILabel()
