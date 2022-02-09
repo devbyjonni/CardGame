@@ -9,19 +9,20 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var playingCardView: PlayingCardView!
+    @IBOutlet weak private var playingCardView: PlayingCardView!
     
-    @IBAction func flipCard(_ sender: UITapGestureRecognizer) {
+    @IBAction private func flipCard(_ sender: UITapGestureRecognizer) {
         switch sender.state {
         case .ended:
-            playingCardView.isFaceUp = !playingCardView.isFaceUp
+            animateCard()
         default: break
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
+    private func animateCard() {
+        let transitionOptions: UIView.AnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
+        UIView.transition(with: playingCardView, duration: 0.40, options: transitionOptions, animations: {
+            self.playingCardView.isFaceUp = !self.playingCardView.isFaceUp
+        })
     }
 }
